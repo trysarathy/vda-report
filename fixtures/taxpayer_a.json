@@ -1,0 +1,79 @@
+{
+  "_note": "A recorded history, shaped to exercise every case the engine has to get right: FIFO across two lots, a self-transfer between the taxpayer's own wallets, a realised loss that must NOT offset gains, and a token with no price on record. The addresses are not real.",
+
+  "financial_year": "2026-27",
+
+  "owned_wallets": [
+    "0xaaaa1111aaaa1111aaaa1111aaaa1111aaaa1111",
+    "0xbbbb2222bbbb2222bbbb2222bbbb2222bbbb2222"
+  ],
+
+  "transfers": [
+    { "tx_hash": "0x1a01c0ffee00000000000000000000000000000000000000000000000000001",
+      "timestamp": "2026-04-10T09:15:00+00:00", "asset": "ETH", "amount": "2.0",
+      "direction": "in",  "counterparty": "0x9999exchange99999999999999999999999999990",
+      "wallet": "0xaaaa1111aaaa1111aaaa1111aaaa1111aaaa1111",
+      "_what": "bought 2 ETH on a foreign exchange, withdrawn to self-custody" },
+
+    { "tx_hash": "0x1a01c0ffee00000000000000000000000000000000000000000000000000002",
+      "timestamp": "2026-05-15T14:40:00+00:00", "asset": "ETH", "amount": "1.0",
+      "direction": "in",  "counterparty": "0x9999exchange99999999999999999999999999990",
+      "wallet": "0xaaaa1111aaaa1111aaaa1111aaaa1111aaaa1111",
+      "_what": "bought 1 more, higher price — this creates the second FIFO lot" },
+
+    { "tx_hash": "0x1a01c0ffee00000000000000000000000000000000000000000000000000003",
+      "timestamp": "2026-06-20T11:00:00+00:00", "asset": "ETH", "amount": "1.5",
+      "direction": "out", "counterparty": "0xbbbb2222bbbb2222bbbb2222bbbb2222bbbb2222",
+      "wallet": "0xaaaa1111aaaa1111aaaa1111aaaa1111aaaa1111",
+      "_what": "moved to her own second wallet — NOT a sale, and the case most tools get wrong" },
+
+    { "tx_hash": "0x1a01c0ffee00000000000000000000000000000000000000000000000000003",
+      "timestamp": "2026-06-20T11:00:00+00:00", "asset": "ETH", "amount": "1.5",
+      "direction": "in",  "counterparty": "0xaaaa1111aaaa1111aaaa1111aaaa1111aaaa1111",
+      "wallet": "0xbbbb2222bbbb2222bbbb2222bbbb2222bbbb2222",
+      "_what": "the same movement, seen from the receiving wallet" },
+
+    { "tx_hash": "0x1a01c0ffee00000000000000000000000000000000000000000000000000004",
+      "timestamp": "2026-08-05T16:20:00+00:00", "asset": "ETH", "amount": "2.5",
+      "direction": "out", "counterparty": "0x7777buyer7777777777777777777777777777770",
+      "wallet": "0xbbbb2222bbbb2222bbbb2222bbbb2222bbbb2222",
+      "_what": "sold 2.5 ETH — spans both lots, so it must produce two Schedule VDA rows" },
+
+    { "tx_hash": "0x1a01c0ffee00000000000000000000000000000000000000000000000000005",
+      "timestamp": "2026-09-01T08:05:00+00:00", "asset": "USDT", "amount": "1000",
+      "direction": "in",  "counterparty": "0x9999exchange99999999999999999999999999990",
+      "wallet": "0xaaaa1111aaaa1111aaaa1111aaaa1111aaaa1111" },
+
+    { "tx_hash": "0x1a01c0ffee00000000000000000000000000000000000000000000000000006",
+      "timestamp": "2026-11-10T19:30:00+00:00", "asset": "USDT", "amount": "1000",
+      "direction": "out", "counterparty": "0x7777buyer7777777777777777777777777777770",
+      "wallet": "0xaaaa1111aaaa1111aaaa1111aaaa1111aaaa1111",
+      "_what": "sold at a loss — under s.115BBH this must NOT reduce the ETH gains" },
+
+    { "tx_hash": "0x1a01c0ffee00000000000000000000000000000000000000000000000000007",
+      "timestamp": "2026-12-01T10:00:00+00:00", "asset": "XYZ", "amount": "5000",
+      "direction": "in",  "counterparty": "0x5555airdrop555555555555555555555555555550",
+      "wallet": "0xaaaa1111aaaa1111aaaa1111aaaa1111aaaa1111",
+      "_what": "an illiquid token with no price on record — the engine must refuse to value it" },
+
+    { "tx_hash": "0x1a01c0ffee00000000000000000000000000000000000000000000000000008",
+      "timestamp": "2027-01-15T13:45:00+00:00", "asset": "XYZ", "amount": "5000",
+      "direction": "out", "counterparty": "0x7777buyer7777777777777777777777777777770",
+      "wallet": "0xaaaa1111aaaa1111aaaa1111aaaa1111aaaa1111" }
+  ],
+
+  "usd_prices": {
+    "ETH|2026-04-10": "2000.00", "ETH|2026-05-15": "2500.00",
+    "ETH|2026-06-20": "2600.00", "ETH|2026-08-05": "3000.00",
+    "ETH|2026-09-01": "2800.00", "ETH|2026-11-10": "2700.00",
+    "ETH|2026-12-01": "2900.00", "ETH|2027-01-15": "3100.00",
+    "USDT|2026-09-01": "1.00",   "USDT|2026-11-10": "0.98",
+    "USDT|2026-12-01": "1.00",   "USDT|2027-01-15": "1.00"
+  },
+
+  "usd_inr": {
+    "2026-04-10": "83.00", "2026-05-15": "83.50", "2026-06-20": "83.80",
+    "2026-08-05": "84.00", "2026-09-01": "84.20", "2026-11-10": "83.00",
+    "2026-12-01": "84.50", "2027-01-15": "85.00"
+  }
+}
