@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>vda-report — Schedule VDA from the chain</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --paper:#F7F8F7; --card:#FFF; --sunk:#EEF0EE; --ink:#14181A; --muted:#5D6763;
+    --faint:#8A938E; --rule:#D9DDDA; --indigo:#2D4A5C; --indigo-soft:#E4EAED;
+    --oxide:#A64B3A; --oxide-soft:#F6E9E5; --green:#2F5D4A;
+    --display:"Newsreader",Georgia,serif;
+    --body:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    color-scheme:light;
+  }
+  @media (prefers-color-scheme:dark){:root{
+    color-scheme:dark;
+    --paper:#101312; --card:#171B1A; --sunk:#1C2120; --ink:#E7EBE8; --muted:#9AA49F;
+    --faint:#6E7975; --rule:#282E2C; --indigo:#8FB4C9; --indigo-soft:#1B2830;
+    --oxide:#D98B78; --oxide-soft:#2A1D19; --green:#7FB79C;
+  }}
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);
+       font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding-inline:20px;padding-block:48px 90px}
+  a{color:var(--indigo);text-underline-offset:3px}
+  :focus-visible{outline:2px solid var(--indigo);outline-offset:2px}
+
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+           text-transform:uppercase;color:var(--faint)}
+  h1{font-family:var(--display);font-weight:400;font-size:clamp(30px,6.4vw,44px);
+     line-height:1.12;margin:12px 0 0;text-wrap:balance;letter-spacing:-.01em}
+  .sub{font-family:var(--display);font-style:italic;color:var(--muted);
+       font-size:clamp(17px,3.2vw,19px);margin:14px 0 0;max-width:34em}
+
+  form{margin-top:30px;display:flex;gap:10px;flex-wrap:wrap}
+  input[type=text]{flex:1 1 320px;min-width:0;font-family:var(--mono);font-size:13px;
+    padding:13px 14px;border:1px solid var(--rule);border-radius:3px;
+    background:var(--card);color:var(--ink)}
+  input::placeholder{color:var(--faint)}
+  button{font-family:var(--body);font-size:14px;font-weight:500;padding:13px 20px;
+    border-radius:3px;border:1px solid var(--indigo);background:var(--indigo);
+    color:var(--paper);cursor:pointer}
+  button.ghost{background:transparent;color:var(--indigo)}
+  button:disabled{opacity:.5;cursor:default}
+  .hint{font-size:12.5px;color:var(--faint);margin-top:10px}
+
+  .status{margin-top:26px;font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+  .status.err{color:var(--oxide)}
+
+  section{margin-top:34px}
+  .bar{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--muted);padding-bottom:9px;border-bottom:1px solid var(--rule)}
+
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .chip{font-family:var(--mono);font-size:11.5px;padding:5px 10px;border-radius:99px;
+    border:1px solid var(--rule);background:var(--card);color:var(--muted)}
+  .chip b{color:var(--ink);font-weight:600}
+  .chip.self{border-color:var(--green);color:var(--green)}
+  .chip.self b{color:var(--green)}
+
+  .figures{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:1px;
+    background:var(--rule);border:1px solid var(--rule);border-radius:3px;overflow:hidden}
+  .fig{background:var(--card);padding:18px}
+  .fig.wrong{background:var(--oxide-soft)}
+  .fig .label{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--muted)}
+  .fig.wrong .label{color:var(--oxide)}
+  .fig .amt{font-family:var(--mono);font-size:clamp(23px,5.4vw,30px);font-weight:600;
+    font-variant-numeric:tabular-nums;margin-top:6px;letter-spacing:-.02em}
+  .fig.wrong .amt{color:var(--oxide)}
+  .fig .note{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.45}
+  @media(max-width:460px){.figures{grid-template-columns:1fr}}
+
+  table{width:100%;border-collapse:collapse;margin-top:14px;
+    font-family:var(--mono);font-size:12px}
+  th{text-align:left;font-weight:500;color:var(--faint);font-size:10.5px;
+    letter-spacing:.08em;text-transform:uppercase;padding:8px 10px 8px 0;
+    border-bottom:1px solid var(--rule)}
+  td{padding:9px 10px 9px 0;border-bottom:1px solid var(--rule);
+    vertical-align:top;font-variant-numeric:tabular-nums}
+  td.num{text-align:right;white-space:nowrap}
+  td.loss{color:var(--oxide)}
+  .tx{display:block;color:var(--faint);font-size:10.5px;margin-top:2px}
+  .scroll{overflow-x:auto}
+  .scroll table{min-width:520px}
+  .scrollnote{font-size:11.5px;color:var(--faint);margin:6px 0 0;font-family:var(--mono)}
+  @media(min-width:620px){.scrollnote{display:none}}
+
+  .totals{margin-top:16px;border-top:2px solid var(--ink);padding-top:12px}
+  .trow{display:flex;justify-content:space-between;gap:16px;padding:5px 0;
+    font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums}
+  .trow.big{font-size:15px;font-weight:600;border-top:1px solid var(--rule);
+    margin-top:6px;padding-top:11px}
+  .trow .k{color:var(--muted);font-weight:400}
+
+  .gap{margin-top:12px;padding:12px 14px;border:1px solid var(--rule);
+    border-left:3px solid var(--oxide);border-radius:3px;background:var(--card)}
+  .gap .why{font-size:13.5px;color:var(--ink);line-height:1.5}
+  .gap .meta{font-family:var(--mono);font-size:10.5px;color:var(--faint);margin-top:6px;
+    overflow-wrap:anywhere}
+
+  .foot{margin-top:56px;padding-top:20px;border-top:1px solid var(--rule);
+    font-size:13px;color:var(--muted)}
+  .foot p{margin:0 0 8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="eyebrow">Schedule VDA · s.115BBH · working papers</div>
+  <h1>The chain records what moved. It does not record why.</h1>
+  <p class="sub">Paste an Ethereum address. This reads it, works out which movements were actually disposals, and computes what India's s.115BBH says is owed — refusing to value anything it can't trace to a hash.</p>
+
+  <form id="f">
+    <input type="text" id="wallet" name="wallet" spellcheck="false" autocomplete="off"
+           placeholder="0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045">
+    <button type="submit" id="go">Read the chain</button>
+    <button type="button" class="ghost" id="sample">Run the sample</button>
+  </form>
+  <p class="hint">Reads the last 10 ETH movements. Declare more than one wallet by separating addresses with a comma — that is the whole point, and the sample shows why.</p>
+
+  <div class="status" id="status">Loading the sample…</div>
+  <div id="out"></div>
+
+  <div class="foot">
+    <p><a href="https://github.com/trysarathy/vda-report">github.com/trysarathy/vda-report</a> — 39 tests, no dependencies outside the standard library.</p>
+    <p>Built by Aashmiin Kaur, Year 2 Bachelor of Accountancy, SMU. Working software, not tax advice.</p>
+  </div>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const short = h => esc(h.slice(0, 14)) + '…';
+
+function render(d) {
+  const c = d.classified || {};
+  const self = c.self_transfer || 0;
+  const t = d.totals;
+  let h = '';
+
+  h += `<section><div class="bar"><span>what it read</span><span>${esc(d.mode)} · ${d.elapsed_ms} ms</span></div>
+    <div class="chips">
+      <span class="chip"><b>${d.movements}</b> movements</span>
+      <span class="chip"><b>${c.acquisition || 0}</b> acquisitions</span>
+      <span class="chip"><b>${c.disposal || 0}</b> disposals</span>
+      <span class="chip ${self ? 'self' : ''}"><b>${self}</b> self-transfers${self ? ' — not sales' : ''}</span>
+    </div>
+    <p class="hint">${esc(d.source)}</p></section>`;
+
+  h += `<section><div class="bar"><span>s.115BBH, and what netting would say</span><span>FY ${esc(d.financial_year)}</span></div>
+    <div class="figures">
+      <div class="fig"><div class="label">Correctly</div><div class="amt">₹${t.payable}</div>
+        <div class="note">Gains ₹${t.gains} taxed. Losses ₹${t.losses} disclosed, not deducted.</div></div>
+      <div class="fig wrong"><div class="label">If losses were netted</div><div class="amt">₹${t.payable_if_netted}</div>
+        <div class="note">Taxable income shown as ₹${t.taxable_if_netted}.</div></div>
+    </div>
+    <p class="hint">Understated by <b>₹${t.understated_by}</b> on this history. Where losses
+    outweigh gains — an ordinary crypto year — the gap stops being a percentage and becomes
+    a multiple.</p></section>`;
+
+  if (d.rows.length) {
+    h += `<section><div class="bar"><span>Schedule VDA</span><span>${d.rows.length} row${d.rows.length > 1 ? 's' : ''}</span></div>
+      <p class="scrollnote">scroll the table sideways →</p>
+      <div class="scroll"><table><thead><tr>
+        <th>Asset</th><th>Acquired</th><th>Disposed</th>
+        <th style="text-align:right">Cost</th><th style="text-align:right">Consideration</th>
+        <th style="text-align:right">Gain / (loss)</th></tr></thead><tbody>`;
+    for (const r of d.rows) {
+      h += `<tr>
+        <td>${esc(r.quantity)} ${esc(r.asset)}<span class="tx">${short(r.acquisition_tx)} → ${short(r.disposal_tx)}</span></td>
+        <td>${r.acquired}</td><td>${r.disposed}</td>
+        <td class="num">₹${r.cost}</td><td class="num">₹${r.consideration}</td>
+        <td class="num ${r.is_loss ? 'loss' : ''}">${r.is_loss ? '(' : ''}₹${r.gain}${r.is_loss ? ')' : ''}</td></tr>`;
+    }
+    h += `</tbody></table></div>
+      <div class="totals">
+        <div class="trow"><span class="k">Gains</span><span>₹${t.gains}</span></div>
+        <div class="trow"><span class="k">Losses (not deductible)</span><span>₹${t.losses}</span></div>
+        <div class="trow"><span class="k">Taxable income</span><span>₹${t.taxable}</span></div>
+        <div class="trow"><span class="k">Tax at 30%</span><span>₹${t.tax}</span></div>
+        <div class="trow"><span class="k">Health &amp; education cess 4%</span><span>₹${t.cess}</span></div>
+        <div class="trow big"><span>Total payable</span><span>₹${t.payable}</span></div>
+      </div></section>`;
+  }
+
+  if (d.peak && d.peak.inr) {
+    h += `<section><div class="bar"><span>Schedule FA — peak balance</span><span>a floor</span></div>
+      <div class="trow big" style="border:0;padding-top:12px"><span>at least ₹${d.peak.inr}</span><span>${d.peak.on}</span></div>
+      <p class="hint">${esc((d.peak.caveat || '').replace(/\s+/g, ' '))}</p></section>`;
+  }
+
+  if (d.gaps.length) {
+    h += `<section><div class="bar"><span>refused, not zeroed</span><span>${d.gaps.length}</span></div>`;
+    for (const g of d.gaps) {
+      h += `<div class="gap"><div class="why">${esc(g.why)}</div>
+        <div class="meta">${g.on} · ${esc(g.asset)} · ${esc(g.tx)}</div></div>`;
+    }
+    h += `<p class="hint">A report with a visible hole can be finished by hand. A report whose holes were quietly filled looks finished, gets filed, and cannot be defended.</p></section>`;
+  }
+
+  $('#out').innerHTML = h;
+}
+
+async function run(url, label) {
+  $('#go').disabled = true; $('#sample').disabled = true;
+  $('#status').className = 'status';
+  $('#status').textContent = label;
+  $('#out').innerHTML = '';
+  try {
+    const r = await fetch(url);
+    const d = await r.json();
+    if (!d.ok) {
+      $('#status').className = 'status err';
+      $('#status').textContent = d.error;
+    } else {
+      $('#status').textContent = '';
+      render(d);
+    }
+  } catch (e) {
+    $('#status').className = 'status err';
+    $('#status').textContent = 'Could not reach the server. ' + e.message;
+  }
+  $('#go').disabled = false; $('#sample').disabled = false;
+}
+
+$('#f').addEventListener('submit', e => {
+  e.preventDefault();
+  const raw = $('#wallet').value.trim();
+  if (!raw) { $('#wallet').focus(); return; }
+  const q = raw.split(',').map(w => 'wallet=' + encodeURIComponent(w.trim()))
+               .filter(Boolean).join('&');
+  run('/api/report?' + q + '&n=10', 'Reading the chain, fetching prices…');
+});
+
+$('#sample').addEventListener('click', () =>
+  run('/api/report?sample=1', 'Replaying the recorded history…'));
+
+run('/api/report?sample=1', 'Loading the sample…');
+</script>
+</body>
+</html>

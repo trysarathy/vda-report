@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/report.py": {
+      "includeFiles": "{vdareport/**,fixtures/**}"
+    }
+  }
+}

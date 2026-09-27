@@ -42,6 +42,7 @@ import sys
 import time
 import urllib.error
 import urllib.parse
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from decimal import Decimal
 from pathlib import Path
@@ -205,6 +206,7 @@ def build(
     transfers: list[Transfer],
     existing: dict | None = None,
     pause_seconds: float = 0.5,
+    workers: int = 6,
     price_fetcher=fetch_usd_price,
     fx_fetcher=fetch_usd_inr,
     log=lambda msg: print(msg, file=sys.stderr),
@@ -225,18 +227,30 @@ def build(
         f"{len(want_prices)} prices and {len(want_fx)} rates still to fetch"
     )
     if want_prices or want_fx:
-        total = (len(want_prices) + len(want_fx)) * pause_seconds
-        log(f"  at {pause_seconds}s between calls that is about {total/60:.1f} minutes")
+        log(f"  fetching {workers} at a time")
 
-    for index, key in enumerate(want_prices):
+    def one_price(key: str):
         asset, day = key.split("|")
-        if index:
-            time.sleep(pause_seconds)
         try:
-            value = price_fetcher(asset, day)
+            return key, price_fetcher(asset, day), None
         except FetchFailed as exc:
-            missing.append(f"COULD NOT ASK for {asset} on {day} — {exc}")
-            log(f"    FAILED   {asset} {day}  ({exc})")
+            return key, None, str(exc)
+
+    # Fetched concurrently. Each date is an independent question, so
+    # asking them one at a time only serves the pause between them --
+    # and `workers` is what keeps us inside the venue's rate limit,
+    # rather than the sleep.
+    if want_prices:
+        with ThreadPoolExecutor(max_workers=workers) as pool:
+            results = list(pool.map(one_price, want_prices))
+    else:
+        results = []
+
+    for key, value, failure in results:
+        asset, day = key.split("|")
+        if failure is not None:
+            missing.append(f"COULD NOT ASK for {asset} on {day} — {failure}")
+            log(f"    FAILED   {asset} {day}  ({failure})")
             continue
         if value is None:
             missing.append(f"the source has no USD price for {asset} on {day}")
@@ -245,14 +259,22 @@ def build(
         prices[key] = str(value)
         log(f"    {asset} {day}  ${value}")
 
-    for index, day in enumerate(want_fx):
-        if index or want_prices:
-            time.sleep(pause_seconds)
+    def one_rate(day: str):
         try:
-            got = fx_fetcher(day)
+            return day, fx_fetcher(day), None
         except FetchFailed as exc:
-            missing.append(f"COULD NOT ASK for USD/INR on {day} — {exc}")
-            log(f"    FAILED   USD/INR {day}  ({exc})")
+            return day, None, str(exc)
+
+    if want_fx:
+        with ThreadPoolExecutor(max_workers=workers) as pool:
+            fx_results = list(pool.map(one_rate, want_fx))
+    else:
+        fx_results = []
+
+    for day, got, failure in fx_results:
+        if failure is not None:
+            missing.append(f"COULD NOT ASK for USD/INR on {day} — {failure}")
+            log(f"    FAILED   USD/INR {day}  ({failure})")
             continue
         if got is None:
             missing.append(f"the source has no USD/INR rate for {day}")
