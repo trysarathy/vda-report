@@ -383,3 +383,85 @@ def test_rounding_is_half_up_not_half_even():
         assert Decimal(value).quantize(
             Decimal("0.01"), rounding=ROUND_HALF_EVEN
         ) != Decimal(expected), "this is exactly where the two conventions differ"
+
+
+# ---------------------------------------------------------------------------
+# Reading a wallet bigger than one page
+# ---------------------------------------------------------------------------
+
+
+def _long_history(total: int, wallet: str) -> list[dict]:
+    rows = [
+        {"blockNumber": str(1000 + i), "timeStamp": str(1400000000 + i * 600),
+         "hash": "0x" + f"{i:064x}", "from": wallet, "to": STRANGER,
+         "value": "1000000000000000", "isError": "0"}
+        for i in range(total)
+    ]
+    # Several transactions sharing one block, straddling a page boundary.
+    for i in range(9998, 10005):
+        rows[i]["blockNumber"] = "10998"
+    return rows
+
+
+def test_a_wallet_bigger_than_one_page_is_read_in_full(monkeypatch):
+    """Etherscan caps a response at 10,000 rows and says nothing about
+    it — HTTP 200, a full-looking list, everything past the cap absent.
+
+    A tool that takes the first page and stops produces a clean,
+    confident, wrong return. This is the test that would have caught
+    it: a wallet with 23,456 transactions must yield 23,456 movements.
+    """
+    rows = _long_history(23456, WALLET_A)
+
+    def fake_call(params):
+        start = int(params["startblock"])
+        page = [r for r in rows if int(r["blockNumber"]) >= start]
+        if params["sort"] == "desc":
+            page = list(reversed(page))
+        return page[: int(params["offset"])]
+
+    monkeypatch.setattr(etherscan, "_call", fake_call)
+    monkeypatch.setattr(etherscan, "PAUSE_SECONDS", 0)
+
+    got = etherscan.fetch_wallet(WALLET_A, key="fake")
+
+    assert len(got) == 23456, "a single page would have returned 10,000"
+
+
+def test_no_transaction_is_lost_at_a_page_boundary(monkeypatch):
+    """A page boundary can fall inside a block that holds several of the
+    wallet's transactions. Resuming from the block AFTER the last one
+    seen would drop the rest of that block."""
+    rows = _long_history(23456, WALLET_A)
+
+    def fake_call(params):
+        start = int(params["startblock"])
+        page = [r for r in rows if int(r["blockNumber"]) >= start]
+        return page[: int(params["offset"])]
+
+    monkeypatch.setattr(etherscan, "_call", fake_call)
+    monkeypatch.setattr(etherscan, "PAUSE_SECONDS", 0)
+
+    hashes = {t.tx_hash for t in etherscan.fetch_wallet(WALLET_A, key="fake")}
+    straddling = {"0x" + f"{i:064x}" for i in range(9998, 10005)}
+
+    assert straddling <= hashes, "transactions sharing block 10998 were lost"
+
+
+def test_most_recent_is_one_page_and_says_so(monkeypatch):
+    """The sampling path stays a single call. It is explicitly a look,
+    not a filing."""
+    rows = _long_history(23456, WALLET_A)
+    calls = []
+
+    def fake_call(params):
+        calls.append(params)
+        page = list(reversed(rows))
+        return page[: int(params["offset"])]
+
+    monkeypatch.setattr(etherscan, "_call", fake_call)
+
+    got = etherscan.fetch_wallet(WALLET_A, key="fake", most_recent=50)
+
+    assert len(calls) == 1
+    assert len(got) == 50

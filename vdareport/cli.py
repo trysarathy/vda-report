@@ -87,6 +87,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--prices", type=Path, help="recorded price and FX tables")
     parser.add_argument("--chain-id", type=int, default=1, help="1 = Ethereum mainnet")
     parser.add_argument("--csv", type=Path, help="also write the Schedule VDA table here")
+    parser.add_argument("--most-recent", type=int, metavar="N",
+                        help="sample the last N movements per wallet instead "
+                             "of reading the whole history. For looking, not "
+                             "for filing — the same flag vdareport.snapshot "
+                             "takes, so the two agree about what was read.")
 
     args = parser.parse_args(argv)
 
@@ -103,7 +108,10 @@ def main(argv: list[str] | None = None) -> int:
         owned = {w.strip().lower() for w in args.wallet}
         print(f"  reading {len(owned)} wallet(s) off the chain...", file=sys.stderr)
         try:
-            transfers = etherscan.fetch_wallets(sorted(owned), chain_id=args.chain_id)
+            transfers = etherscan.fetch_wallets(
+                sorted(owned), chain_id=args.chain_id,
+                most_recent=args.most_recent,
+            )
         except etherscan.EtherscanError as exc:
             print(f"\n  could not read the chain: {exc}\n", file=sys.stderr)
             return 2
@@ -122,6 +130,11 @@ def main(argv: list[str] | None = None) -> int:
     # ---- the report -----------------------------------------------
     report, _events = build(transfers, owned, pricer, financial_year)
     print(render_text(report))
+
+    if args.most_recent:
+        print(f"  NOTE: built from a sample of the last {args.most_recent} "
+              "movement(s) per wallet,")
+        print("  not the whole history. Not a filing.\n")
 
     if args.csv:
         args.csv.parent.mkdir(parents=True, exist_ok=True)
