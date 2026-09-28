@@ -106,6 +106,13 @@
   .gap .meta{font-family:var(--mono);font-size:10.5px;color:var(--faint);margin-top:6px;
     overflow-wrap:anywhere}
 
+  .finding{display:flex;gap:16px;align-items:baseline;padding:12px 0;
+    border-bottom:1px solid var(--rule)}
+  .finding b{font-family:var(--mono);font-size:17px;font-weight:600;
+    color:var(--indigo);min-width:104px;font-variant-numeric:tabular-nums}
+  .finding span{font-size:13.5px;color:var(--muted);line-height:1.5}
+  @media(max-width:460px){.finding{display:block}
+    .finding b{display:block;margin-bottom:4px}}
   .foot{margin-top:56px;padding-top:20px;border-top:1px solid var(--rule);
     font-size:13px;color:var(--muted)}
   .foot p{margin:0 0 8px}
@@ -124,10 +131,29 @@
     <button type="submit" id="go">Read the chain</button>
     <button type="button" class="ghost" id="sample">Run the sample</button>
   </form>
-  <p class="hint">Reads the last 10 ETH movements. Declare more than one wallet by separating addresses with a comma — that is the whole point, and the sample shows why.</p>
+  <p class="hint">Reads the last 25 ETH movements. Declare more than one wallet by separating addresses with a comma — that is the whole point, and the sample shows why.</p>
 
   <div class="status" id="status">Loading the sample…</div>
   <div id="out"></div>
+
+  <section>
+    <div class="bar"><span>what it found in sixty strangers</span><span>a study</span></div>
+    <p class="hint" style="margin-top:14px">Sixty Ethereum addresses drawn at
+    random from recent block traffic &mdash; not chosen &mdash; each assessed as
+    its own taxpayer for FY 2026-27. 469 Schedule VDA rows.</p>
+    <div class="finding"><b>98.1%</b><span>of all tax payable sat in a single
+      address out of the sixty. The median filer owed nothing at all.</span></div>
+    <div class="finding"><b>15 of 35</b><span>wallets with a return to file owed
+      &#8377;0.00 &mdash; and had to file 105 rows between them
+      regardless.</span></div>
+    <div class="finding"><b>0.0003%</b><span>of the gains were carried by the 178
+      rows worth under &#8377;100. Eighty-eight of those rows carry three paise
+      between them.</span></div>
+    <p class="hint">Liability under s.115BBH is a point mass. The duty to
+    disclose is not.
+    <a href="https://github.com/trysarathy/vda-report/blob/main/study/FINDINGS.md">The
+    method, the limits, and the finding that did not survive &rarr;</a></p>
+  </section>
 
   <div class="foot">
     <p><a href="https://github.com/trysarathy/vda-report">github.com/trysarathy/vda-report</a> — 39 tests, no dependencies outside the standard library.</p>
@@ -237,7 +263,7 @@ $('#f').addEventListener('submit', e => {
   if (!raw) { $('#wallet').focus(); return; }
   const q = raw.split(',').map(w => 'wallet=' + encodeURIComponent(w.trim()))
                .filter(Boolean).join('&');
-  run('/api/report?' + q + '&n=10', 'Reading the chain, fetching prices…');
+  run('/api/report?' + q + '&n=25', 'Reading the chain, fetching prices…');
 });
 
 $('#sample').addEventListener('click', () =>
