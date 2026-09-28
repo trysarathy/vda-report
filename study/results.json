@@ -1,0 +1,1380 @@
+{
+  "financial_year": "2026-27",
+  "movements_per_wallet": 50,
+  "drawn": {
+    "drawn_on": "2026-09-28T14:57:44+00:00",
+    "latest_block": 26076685,
+    "blocks_read": [
+      26056909,
+      26057411,
+      26057563,
+      26057991,
+      26058190,
+      26058318,
+      26058801,
+      26059197,
+      26059454,
+      26059979,
+      26062074,
+      26062496,
+      26063324,
+      26063970,
+      26064649,
+      26065496,
+      26065755,
+      26065812,
+      26066765,
+      26067243,
+      26068127,
+      26068135,
+      26068996,
+      26069896,
+      26069971,
+      26070401,
+      26070768,
+      26071257,
+      26071849,
+      26071985,
+      26072981,
+      26073132,
+      26073255,
+      26073459,
+      26074121,
+      26074148,
+      26074539,
+      26074879,
+      26075250,
+      26075830
+    ],
+    "seed": 20260930,
+    "rule": "both ends of value-bearing transactions with empty input data",
+    "excluded": "addresses appearing in more than 2 of the sampled blocks",
+    "distinct_addresses": 3916,
+    "ordinary_addresses": 3776,
+    "sample": [
+      "0x032b32b225d7391aed96232a18b77a4fab570013",
+      "0x08e881b3d360a67a07baf47588373164ac29277d",
+      "0x0a0ff9c1127b2ac0b6c02ebf0d383fdc83f84f5e",
+      "0x0a784e0c41dee3055ed881e19430ce09cc04a2b4",
+      "0x0b86fea68f2dc162c7e5bc6b3e10f7e87bf41f1e",
+      "0x108bb90f507242665a7ce8e6f5821b32810bf10c",
+      "0x1887fa9edadeab7562b01cc3f4fa246ace2c3cdd",
+      "0x257ee97b3e8c14069ab2d594289eb051dcc2fe9b",
+      "0x28b6c7462fedb1e562394ea161fc64867a08d49f",
+      "0x2cf55ac3e3e3662204927ee149ab4ed1a4cc31b4",
+      "0x30c97821104e34e6ed7b37f36afa5cb68530a08c",
+      "0x32427b6964289d98272c53081555701413eb1098",
+      "0x336cb230f397f5501c082e73a182e6e8a5950b7e",
+      "0x422a1ebfc33a0b2bd5b6bea917b65b10c99bebba",
+      "0x43eff201edc3a5b15fb8a73be78a208cfcddbb8c",
+      "0x4562c1b0ffe34cf4306ab2da64cec33e6a0ef598",
+      "0x45f8480ba540a225cb174586c43c2a91a3d779d7",
+      "0x4605353b4f72539f7904184752d4886c960eff32",
+      "0x48471a2a75c722c302b2b68c18286fa1a8417f8e",
+      "0x486bd7391e8b02c6605eec427ed66084ab773e20",
+      "0x497003b87da09c9e2a005c44d41ec0dc6fa553e1",
+      "0x4bcc714f06360ef20dac8bd45a60858d2189b50b",
+      "0x4e670eeff8cecaee3f30b54b935e82ff4f9f2c2f",
+      "0x54f8d6ccdfcbdfbd8e6c1cf4d0047b356d90a61d",
+      "0x56aa800b86ef0936e8acaa8dbfe452573ba3a3df",
+      "0x5b03088e64aef1141b49a53f23bb28bff7151514",
+      "0x5bc3bfccfb4b4a7d40d8b1c4b812cbb646024173",
+      "0x622873b71a7c45176ef160cc50b13866fc3d6766",
+      "0x6bbbea64738d414fb0bbf9173e95ce3b98b4a098",
+      "0x7273f96170d1f358414de4647e738942345fd228",
+      "0x77a2f87f9d19999e9dcd26dad4ddd90d9479e8e0",
+      "0x7f3cb5c4be29de0cef6f798ea52ca9952423197c",
+      "0x842b5bebaf77bf8424ac7aadc3ef1de794ab4852",
+      "0x88d1809ea77ff962f98ef62f8a1981329115d181",
+      "0x92a008402859a5f133d6a5b7cfbbab7239c0e13d",
+      "0x92ddee331d1e716c5bb046d5cdb2f637e48ff13e",
+      "0x9396a03e47471ec144f5e96f89b77169da474ef8",
+      "0x991fdd3622ba66a94f0fd2200798ffba9f18d0f4",
+      "0x9f121cbb258492ff7150400945744da15e9ae6ab",
+      "0xab73ab256df15fd6a7008302876e2e68d73691d9",
+      "0xb028b84783a0381d51dcf0e8ef04b5e502958618",
+      "0xb3279711f6b9d256accb143a23f3ea0656e692f9",
+      "0xb478d8bc396ea991f1c7564f8ca2b1ccd59a510f",
+      "0xb64c9d8737b6e2a1caaef100dd1ead62692b2199",
+      "0xc0408cc1b60dbefe3c5b533c489ad0e46227fc01",
+      "0xc378f9e6696c7921428f061d5b8880de48a6e58e",
+      "0xca82dc97f67497b2e40b7f6edf8d52e317f9b746",
+      "0xcadf8a0f9df2698f2ccf0b66e2147334d41ecdf7",
+      "0xcd8571170ceeaba2e0f456fd311f6e71b3e70d27",
+      "0xd29cd8d1dec8f040ae32692fcac2321101c6f283",
+      "0xd811ac8e0f46ca5360d24330a8490c4d379a6c4a",
+      "0xe2be887916afb9a33015d7f9316b00b4b205c650",
+      "0xe9f68e73dd54c42de34e5284ed82d2b82004bd39",
+      "0xeafe90c9ed3309964e4cfb48c4d2138d277c774d",
+      "0xeddc1b0d424e990530d431ee3475dda55c0142ea",
+      "0xef9d56e77dadbdff7adcbeef851d154fb6171433",
+      "0xf3613267bb665a604bbfd09761c809bc1e639bd6",
+      "0xf49e18072a68ada17ccb801c68cd32dc7ba107ca",
+      "0xf4a12ad3274f47a109a58bac2508708beb1390c3",
+      "0xf58304893f74cd06b3bc2886a8c39b2457c10c3d"
+    ]
+  },
+  "unread": {},
+  "wallets": {
+    "0x032b32b225d7391aed96232a18b77a4fab570013": {
+      "rows": 1,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "257.55"
+    },
+    "0x08e881b3d360a67a07baf47588373164ac29277d": {
+      "rows": 37,
+      "gains_inr": "16828637.28",
+      "losses_inr": "0.16",
+      "payable_inr": "5250534.831360",
+      "payable_if_netted_inr": "5250534.781440",
+      "understated_inr": "0.049920",
+      "rows_under": {
+        "1": 26,
+        "10": 27,
+        "100": 28
+      },
+      "gains_under": {
+        "1": "0.03",
+        "10": "0.03",
+        "100": "0.03"
+      },
+      "gaps": 7,
+      "complete": false,
+      "smallest_row_inr": "0.00"
+    },
+    "0x0a0ff9c1127b2ac0b6c02ebf0d383fdc83f84f5e": {
+      "rows": 1,
+      "gains_inr": "0.01",
+      "losses_inr": "0",
+      "payable_inr": "0.003120",
+      "payable_if_netted_inr": "0.003120",
+      "understated_inr": "0.000000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 17,
+      "complete": false,
+      "smallest_row_inr": "8887.15"
+    },
+    "0x0a784e0c41dee3055ed881e19430ce09cc04a2b4": {
+      "rows": 0,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 22,
+      "complete": false,
+      "smallest_row_inr": "0"
+    },
+    "0x0b86fea68f2dc162c7e5bc6b3e10f7e87bf41f1e": {
+      "rows": 0,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 1,
+      "complete": false,
+      "smallest_row_inr": "0"
+    },
+    "0x108bb90f507242665a7ce8e6f5821b32810bf10c": {
+      "rows": 1,
+      "gains_inr": "0",
+      "losses_inr": "343.19",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "964.88"
+    },
+    "0x1887fa9edadeab7562b01cc3f4fa246ace2c3cdd": {
+      "rows": 0,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 16,
+      "complete": false,
+      "smallest_row_inr": "0"
+    },
+    "0x257ee97b3e8c14069ab2d594289eb051dcc2fe9b": {
+      "rows": 30,
+      "gains_inr": "0",
+      "losses_inr": "145.09",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 19,
+      "complete": false,
+      "smallest_row_inr": "112.26"
+    },
+    "0x28b6c7462fedb1e562394ea161fc64867a08d49f": {
+      "rows": 0,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "0"
+    },
+    "0x2cf55ac3e3e3662204927ee149ab4ed1a4cc31b4": {
+      "rows": 39,
+      "gains_inr": "3.26",
+      "losses_inr": "0.04",
+      "payable_inr": "1.017120",
+      "payable_if_netted_inr": "1.004640",
+      "understated_inr": "0.012480",
+      "rows_under": {
+        "1": 0,
+        "10": 2,
+        "100": 8
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0.04"
+      },
+      "gaps": 7,
+      "complete": false,
+      "smallest_row_inr": "1.18"
+    },
+    "0x30c97821104e34e6ed7b37f36afa5cb68530a08c": {
+      "rows": 0,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "0"
+    },
+    "0x32427b6964289d98272c53081555701413eb1098": {
+      "rows": 0,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 3,
+      "complete": false,
+      "smallest_row_inr": "0"
+    },
+    "0x336cb230f397f5501c082e73a182e6e8a5950b7e": {
+      "rows": 0,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "0"
+    },
+    "0x422a1ebfc33a0b2bd5b6bea917b65b10c99bebba": {
+      "rows": 3,
+      "gains_inr": "0",
+      "losses_inr": "401.66",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "442.76"
+    },
+    "0x43eff201edc3a5b15fb8a73be78a208cfcddbb8c": {
+      "rows": 0,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "0"
+    },
+    "0x4562c1b0ffe34cf4306ab2da64cec33e6a0ef598": {
+      "rows": 0,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 50,
+      "complete": false,
+      "smallest_row_inr": "0"
+    },
+    "0x45f8480ba540a225cb174586c43c2a91a3d779d7": {
+      "rows": 0,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "0"
+    },
+    "0x4605353b4f72539f7904184752d4886c960eff32": {
+      "rows": 44,
+      "gains_inr": "0",
+      "losses_inr": "0.02",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 42,
+        "10": 43,
+        "100": 43
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 1,
+      "complete": false,
+      "smallest_row_inr": "0.00"
+    },
+    "0x48471a2a75c722c302b2b68c18286fa1a8417f8e": {
+      "rows": 6,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 2,
+        "10": 2,
+        "100": 3
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 43,
+      "complete": false,
+      "smallest_row_inr": "0.01"
+    },
+    "0x486bd7391e8b02c6605eec427ed66084ab773e20": {
+      "rows": 0,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "0"
+    },
+    "0x497003b87da09c9e2a005c44d41ec0dc6fa553e1": {
+      "rows": 0,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 2,
+      "complete": false,
+      "smallest_row_inr": "0"
+    },
+    "0x4bcc714f06360ef20dac8bd45a60858d2189b50b": {
+      "rows": 3,
+      "gains_inr": "230059.39",
+      "losses_inr": "0",
+      "payable_inr": "71778.529680",
+      "payable_if_netted_inr": "71778.529680",
+      "understated_inr": "0.000000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "32027.42"
+    },
+    "0x4e670eeff8cecaee3f30b54b935e82ff4f9f2c2f": {
+      "rows": 9,
+      "gains_inr": "78.23",
+      "losses_inr": "0",
+      "payable_inr": "24.407760",
+      "payable_if_netted_inr": "24.407760",
+      "understated_inr": "0.000000",
+      "rows_under": {
+        "1": 0,
+        "10": 4,
+        "100": 5
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "1.67",
+        "100": "3.82"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "1.71"
+    },
+    "0x54f8d6ccdfcbdfbd8e6c1cf4d0047b356d90a61d": {
+      "rows": 17,
+      "gains_inr": "2296.98",
+      "losses_inr": "795.22",
+      "payable_inr": "716.657760",
+      "payable_if_netted_inr": "468.549120",
+      "understated_inr": "248.108640",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 1
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 2,
+      "complete": false,
+      "smallest_row_inr": "24.74"
+    },
+    "0x56aa800b86ef0936e8acaa8dbfe452573ba3a3df": {
+      "rows": 3,
+      "gains_inr": "1.17",
+      "losses_inr": "0",
+      "payable_inr": "0.365040",
+      "payable_if_netted_inr": "0.365040",
+      "understated_inr": "0.000000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 1
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0.04"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "25.83"
+    },
+    "0x5b03088e64aef1141b49a53f23bb28bff7151514": {
+      "rows": 0,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "0"
+    },
+    "0x5bc3bfccfb4b4a7d40d8b1c4b812cbb646024173": {
+      "rows": 49,
+      "gains_inr": "30.75",
+      "losses_inr": "14.43",
+      "payable_inr": "9.594000",
+      "payable_if_netted_inr": "5.091840",
+      "understated_inr": "4.502160",
+      "rows_under": {
+        "1": 1,
+        "10": 3,
+        "100": 16
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0.19",
+        "100": "10.94"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "0.00"
+    },
+    "0x622873b71a7c45176ef160cc50b13866fc3d6766": {
+      "rows": 1,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "167.30"
+    },
+    "0x6bbbea64738d414fb0bbf9173e95ce3b98b4a098": {
+      "rows": 0,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "0"
+    },
+    "0x7273f96170d1f358414de4647e738942345fd228": {
+      "rows": 18,
+      "gains_inr": "91910.05",
+      "losses_inr": "989.77",
+      "payable_inr": "28675.935600",
+      "payable_if_netted_inr": "28367.127360",
+      "understated_inr": "308.808240",
+      "rows_under": {
+        "1": 1,
+        "10": 1,
+        "100": 1
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 11,
+      "complete": false,
+      "smallest_row_inr": "0.00"
+    },
+    "0x77a2f87f9d19999e9dcd26dad4ddd90d9479e8e0": {
+      "rows": 1,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "1964.27"
+    },
+    "0x7f3cb5c4be29de0cef6f798ea52ca9952423197c": {
+      "rows": 1,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "25827.88"
+    },
+    "0x842b5bebaf77bf8424ac7aadc3ef1de794ab4852": {
+      "rows": 0,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "0"
+    },
+    "0x88d1809ea77ff962f98ef62f8a1981329115d181": {
+      "rows": 0,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "0"
+    },
+    "0x92a008402859a5f133d6a5b7cfbbab7239c0e13d": {
+      "rows": 34,
+      "gains_inr": "3314.71",
+      "losses_inr": "2446.08",
+      "payable_inr": "1034.189520",
+      "payable_if_netted_inr": "271.012560",
+      "understated_inr": "763.176960",
+      "rows_under": {
+        "1": 3,
+        "10": 3,
+        "100": 3
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 4,
+      "complete": false,
+      "smallest_row_inr": "0.00"
+    },
+    "0x92ddee331d1e716c5bb046d5cdb2f637e48ff13e": {
+      "rows": 11,
+      "gains_inr": "57.13",
+      "losses_inr": "97.01",
+      "payable_inr": "17.824560",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "17.824560",
+      "rows_under": {
+        "1": 2,
+        "10": 2,
+        "100": 5
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "26.03"
+      },
+      "gaps": 7,
+      "complete": false,
+      "smallest_row_inr": "0.00"
+    },
+    "0x9396a03e47471ec144f5e96f89b77169da474ef8": {
+      "rows": 47,
+      "gains_inr": "2043.60",
+      "losses_inr": "967.00",
+      "payable_inr": "637.603200",
+      "payable_if_netted_inr": "335.899200",
+      "understated_inr": "301.704000",
+      "rows_under": {
+        "1": 1,
+        "10": 17,
+        "100": 23
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "2.53",
+        "100": "2.59"
+      },
+      "gaps": 1,
+      "complete": false,
+      "smallest_row_inr": "0.89"
+    },
+    "0x991fdd3622ba66a94f0fd2200798ffba9f18d0f4": {
+      "rows": 27,
+      "gains_inr": "12.57",
+      "losses_inr": "36.55",
+      "payable_inr": "3.921840",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "3.921840",
+      "rows_under": {
+        "1": 0,
+        "10": 5,
+        "100": 24
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "2.20",
+        "100": "12.57"
+      },
+      "gaps": 1,
+      "complete": false,
+      "smallest_row_inr": "1.27"
+    },
+    "0x9f121cbb258492ff7150400945744da15e9ae6ab": {
+      "rows": 0,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "0"
+    },
+    "0xab73ab256df15fd6a7008302876e2e68d73691d9": {
+      "rows": 0,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 3,
+      "complete": false,
+      "smallest_row_inr": "0"
+    },
+    "0xb028b84783a0381d51dcf0e8ef04b5e502958618": {
+      "rows": 0,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 50,
+      "complete": false,
+      "smallest_row_inr": "0"
+    },
+    "0xb3279711f6b9d256accb143a23f3ea0656e692f9": {
+      "rows": 0,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 1,
+      "complete": false,
+      "smallest_row_inr": "0"
+    },
+    "0xb478d8bc396ea991f1c7564f8ca2b1ccd59a510f": {
+      "rows": 0,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "0"
+    },
+    "0xb64c9d8737b6e2a1caaef100dd1ead62692b2199": {
+      "rows": 1,
+      "gains_inr": "2813.24",
+      "losses_inr": "0",
+      "payable_inr": "877.730880",
+      "payable_if_netted_inr": "877.730880",
+      "understated_inr": "0.000000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "4772.92"
+    },
+    "0xc0408cc1b60dbefe3c5b533c489ad0e46227fc01": {
+      "rows": 2,
+      "gains_inr": "467.48",
+      "losses_inr": "0",
+      "payable_inr": "145.853760",
+      "payable_if_netted_inr": "145.853760",
+      "understated_inr": "0.000000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "502.25"
+    },
+    "0xc378f9e6696c7921428f061d5b8880de48a6e58e": {
+      "rows": 1,
+      "gains_inr": "0",
+      "losses_inr": "0.01",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "1811.87"
+    },
+    "0xca82dc97f67497b2e40b7f6edf8d52e317f9b746": {
+      "rows": 1,
+      "gains_inr": "0.01",
+      "losses_inr": "0",
+      "payable_inr": "0.003120",
+      "payable_if_netted_inr": "0.003120",
+      "understated_inr": "0.000000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "499.72"
+    },
+    "0xcadf8a0f9df2698f2ccf0b66e2147334d41ecdf7": {
+      "rows": 1,
+      "gains_inr": "0",
+      "losses_inr": "596.14",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "4772.32"
+    },
+    "0xcd8571170ceeaba2e0f456fd311f6e71b3e70d27": {
+      "rows": 11,
+      "gains_inr": "0",
+      "losses_inr": "268.89",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "383.28"
+    },
+    "0xd29cd8d1dec8f040ae32692fcac2321101c6f283": {
+      "rows": 15,
+      "gains_inr": "244.16",
+      "losses_inr": "49.21",
+      "payable_inr": "76.177920",
+      "payable_if_netted_inr": "60.824400",
+      "understated_inr": "15.353520",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "203.25"
+    },
+    "0xd811ac8e0f46ca5360d24330a8490c4d379a6c4a": {
+      "rows": 1,
+      "gains_inr": "0.01",
+      "losses_inr": "0",
+      "payable_inr": "0.003120",
+      "payable_if_netted_inr": "0.003120",
+      "understated_inr": "0.000000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "3409.82"
+    },
+    "0xe2be887916afb9a33015d7f9316b00b4b205c650": {
+      "rows": 2,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 7,
+      "complete": false,
+      "smallest_row_inr": "1030.34"
+    },
+    "0xe9f68e73dd54c42de34e5284ed82d2b82004bd39": {
+      "rows": 0,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "0"
+    },
+    "0xeafe90c9ed3309964e4cfb48c4d2138d277c774d": {
+      "rows": 1,
+      "gains_inr": "1214.16",
+      "losses_inr": "0",
+      "payable_inr": "378.817920",
+      "payable_if_netted_inr": "378.817920",
+      "understated_inr": "0.000000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "4827.79"
+    },
+    "0xeddc1b0d424e990530d431ee3475dda55c0142ea": {
+      "rows": 1,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "4599.82"
+    },
+    "0xef9d56e77dadbdff7adcbeef851d154fb6171433": {
+      "rows": 0,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 26,
+      "complete": false,
+      "smallest_row_inr": "0"
+    },
+    "0xf3613267bb665a604bbfd09761c809bc1e639bd6": {
+      "rows": 48,
+      "gains_inr": "61.26",
+      "losses_inr": "323.27",
+      "payable_inr": "19.113120",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "19.113120",
+      "rows_under": {
+        "1": 10,
+        "10": 15,
+        "100": 17
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0.01",
+        "100": "0.01"
+      },
+      "gaps": 1,
+      "complete": false,
+      "smallest_row_inr": "0.00"
+    },
+    "0xf49e18072a68ada17ccb801c68cd32dc7ba107ca": {
+      "rows": 0,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "0"
+    },
+    "0xf4a12ad3274f47a109a58bac2508708beb1390c3": {
+      "rows": 0,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "0"
+    },
+    "0xf58304893f74cd06b3bc2886a8c39b2457c10c3d": {
+      "rows": 1,
+      "gains_inr": "0",
+      "losses_inr": "0",
+      "payable_inr": "0.0000",
+      "payable_if_netted_inr": "0.0000",
+      "understated_inr": "0.0000",
+      "rows_under": {
+        "1": 0,
+        "10": 0,
+        "100": 0
+      },
+      "gains_under": {
+        "1": "0",
+        "10": "0",
+        "100": "0"
+      },
+      "gaps": 0,
+      "complete": true,
+      "smallest_row_inr": "15455.17"
+    }
+  }
+}
