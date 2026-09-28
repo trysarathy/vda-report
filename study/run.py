@@ -38,10 +38,17 @@ from vdareport.sources import etherscan
 
 HERE = Path(__file__).parent
 WALLETS = HERE / "wallets.json"
-RESULTS = HERE / "results.json"
-PRICES = HERE / "prices.json"
+FULL = len(sys.argv) > 1 and sys.argv[1] == "full"
 
-MOVEMENTS = 50            # most recent movements read per wallet
+# A window is a decision about what you are willing not to see. Reading
+# only the fifty most recent movements leaves every earlier acquisition
+# off the record, and the engine reports those disposals as holes rather
+# than inventing a cost for them. Passing "full" walks the entire
+# history instead, page by page, and refuses rather than truncating if a
+# wallet turns out to be larger than the walk allows.
+MOVEMENTS = None if FULL else 50
+RESULTS = HERE / ("results-full.json" if FULL else "results.json")
+PRICES = HERE / ("prices-full.json" if FULL else "prices.json")
 FY = "2026-27"
 THRESHOLDS = [Decimal("1"), Decimal("10"), Decimal("100")]
 PAUSE = 0.25
@@ -107,6 +114,8 @@ def main():
     drawn = json.loads(WALLETS.read_text())
     addresses = drawn["sample"]
     print(f"  {len(addresses)} wallets drawn on {drawn['drawn_on']}")
+    print(f"  reading {'full histories' if FULL else str(MOVEMENTS) + ' movements'}"
+          f" per wallet")
     print()
 
     print("  reading the chain")
@@ -141,7 +150,7 @@ def main():
 
     RESULTS.write_text(json.dumps({
         "financial_year": FY,
-        "movements_per_wallet": MOVEMENTS,
+        "movements_per_wallet": MOVEMENTS or "full history",
         "drawn": drawn,
         "unread": unread,
         "wallets": results,

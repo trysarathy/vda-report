@@ -13,11 +13,15 @@
 # wallets. If it does not, it was never a finding.
 
 import json
+import sys
 from decimal import Decimal
 from pathlib import Path
 from statistics import median
 
-DATA = json.loads((Path(__file__).parent / "results.json").read_text())
+# Which run to look at: results.json by default, or whichever file is
+# named on the command line.
+NAME = sys.argv[1] if len(sys.argv) > 1 else "results.json"
+DATA = json.loads((Path(__file__).parent / NAME).read_text())
 WALLETS = {a: r for a, r in DATA["wallets"].items() if r["rows"]}
 
 
