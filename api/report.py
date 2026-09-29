@@ -35,8 +35,8 @@ from vdareport.report import build                                # noqa: E402
 from vdareport.snapshot import build as build_price_tables        # noqa: E402
 from vdareport.sources import etherscan, fixture                  # noqa: E402
 
-MAX_SAMPLE = 25
-DEFAULT_SAMPLE = 10
+MAX_SAMPLE = 50
+DEFAULT_SAMPLE = 50
 FIXTURE = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
     "fixtures", "taxpayer_a.json",
@@ -128,7 +128,7 @@ def run_wallets(wallets: list[str], sample: int, financial_year: str) -> dict:
         }
 
     tables = build_price_tables(
-        transfers, pause_seconds=0, workers=8, log=lambda m: None
+        transfers, pause_seconds=0, workers=12, log=lambda m: None
     )
     prices: dict[tuple[str, str], str] = {}
     for key, value in tables["usd_prices"].items():

@@ -131,7 +131,7 @@
     <button type="submit" id="go">Read the chain</button>
     <button type="button" class="ghost" id="sample">Run the sample</button>
   </form>
-  <p class="hint">Reads the last 25 ETH movements. Declare more than one wallet by separating addresses with a comma — that is the whole point, and the sample shows why.</p>
+  <p class="hint">Reads the last 50 ETH movements. Declare more than one wallet by separating addresses with a comma — that is the whole point, and the sample shows why.</p>
 
   <div class="status" id="status">Loading the sample…</div>
   <div id="out"></div>
@@ -268,7 +268,7 @@ $('#f').addEventListener('submit', e => {
   if (!raw) { $('#wallet').focus(); return; }
   const q = raw.split(',').map(w => 'wallet=' + encodeURIComponent(w.trim()))
                .filter(Boolean).join('&');
-  run('/api/report?' + q + '&n=25', 'Reading the chain, fetching prices…');
+  run('/api/report?' + q + '&n=50', 'Reading the chain, fetching prices…');
 });
 
 $('#sample').addEventListener('click', () =>
